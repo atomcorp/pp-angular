@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>Premier Predictions</title>
+	<link rel="stylesheet" href="/assets/librarys/bootstrap.min.css">
+	<script src="/assets/librarys/angular.min.js"></script>
+	<script src="/app/app.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Premier Predictions</h1>
+				<div ng-controller="homeController as home">
+					{{ home.test }}
+					{{ home.fixtures}}
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
