@@ -1,0 +1,527 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"res",
+				"response"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"add",
+				"addClass	.addClass()"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"text",
+				"text-transform"
+			],
+			[
+				"marign",
+				"margin-bottom"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"backgorun",
+				"background-color"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"a",
+				"anim-	animation: ${1:name} ${2:duration} ${3:timing-function} ${4:delay} ${5:iteration-count} ${6:direction} ${7:fill-mode};"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ht",
+				"Set Syntax: HTML"
+			],
+			[
+				"scss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"copy",
+				"File: Copy Path"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"json",
+				"Set Syntax: JSON"
+			],
+			[
+				"tasks",
+				"Set Syntax: Tasks"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"forma",
+				"CodeFormatter: Format Code"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 424.0
+	},
+	"console":
+	{
+		"height": 162.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/atom/work/ca-prototype"
+	],
+	"file_history":
+	[
+		"/C/Users/atom/Site Prep/pp/gulpfile.js",
+		"/C/Users/atom/Site Prep/pp/app/example-data/fixtures.json",
+		"/C/Users/atom/Site Prep/pp/app/example-data/simple-object.json",
+		"/C/Users/atom/work/ca-prototype/gulpfile.js",
+		"/C/Users/atom/Site Prep/pp/app/app.js",
+		"/C/Users/atom/Site Prep/pp/index.html",
+		"/C/Users/atom/Site Prep/pp/.gitignore",
+		"/C/Users/atom/Site Prep/pp/assets/css/main.scss",
+		"/C/Users/atom/Site Prep/pp/premier-predictions.sublime-project",
+		"/C/Users/atom/Site Prep/pp/app/example-data/results.json",
+		"/C/Users/atom/Life/Work/web/Active Projects/prem_predictions/footy.js",
+		"/C/Users/atom/Life/Work/web/experiments/table-tests/data.php",
+		"/C/Users/atom/Site Prep/pp/app/example-data/teams.json",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_type.scss",
+		"/C/xampp/htdocs/constellations/includes/database/database.inc",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_front-page.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/.gitignore",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/themes/views-view--gallery.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/themes/views-view-unformatted--gallery.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/js/plugins/lightbox.js",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/themes/views-view--hire-us-background-image--block-3.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/themes/views-view-unformatted--hire-us-background-image--block-3.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/css/style.css",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/templates/page--contact.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/templates/page--front-page.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/templates/page.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_whats-on.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/js/effects.js",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/constellations.info",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_gallery.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_global.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/all.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/constellations.todo",
+		"/C/Users/atom/Life/Finance/2666-laptop/2015/to-do.todo",
+		"/C/Users/atom/Site Prep/Experiments/angular/js/main.js",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_lightbox.scss",
+		"/C/Users/atom/AppData/Local/Temp/Temp1_Chocolat-0.4.10.zip/Chocolat-0.4.10/dist/css/chocolat.css",
+		"/C/Users/atom/AppData/Local/Temp/Temp1_Chocolat-0.4.10.zip/Chocolat-0.4.10/dist/js/jquery.chocolat.min.js",
+		"/E/Users/Tom/Downloads/fancyapps-fancyBox-v2.1.5-0-ge2248f4/fancyapps-fancyBox-18d1712/source/helpers/jquery.fancybox-buttons.css",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/gulpfile.js",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/templates/html.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/themes/views-view-unformatted--what-s-on--past-events.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_food-drink.scss",
+		"/C/Users/atom/Documents/My Games/Fallout4/Fallout4.ini",
+		"/C/Users/atom/AppData/Roaming/Spotify/prefs",
+		"/C/Users/atom/Site Prep/whosampled/gradient",
+		"/C/Users/atom/AppData/Local/Temp/Temp1_bootstrap-4.0.0-alpha.zip/bootstrap-4.0.0-alpha/dist/js/bootstrap.js",
+		"/C/Users/atom/AppData/Local/Temp/Temp1_bootstrap-4.0.0-alpha.zip/bootstrap-4.0.0-alpha/scss/bootstrap.scss",
+		"/C/Users/atom/AppData/Local/Temp/Temp1_bootstrap-4.0.0-alpha.zip/bootstrap-4.0.0-alpha/dist/css/bootstrap.css",
+		"/E/Users/Tom/Downloads/htaccess",
+		"/C/Users/atom/AppData/Local/Temp/fz3temp-1/page--front-page.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/bootstrap/stylesheets/bootstrap/_buttons.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/bootstrap/stylesheets/_bootstrap.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/bootstrap/stylesheets/bootstrap/_glyphicons.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_find-us.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_nav-header.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_general.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_slider.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/template.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/themes/views-view--what-s-on--slider.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_newsletter.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/themes/views-view-unformatted--what-s-on--whats-on-page.tpl.php",
+		"/C/xampp/htdocs/constellations/retry.php",
+		"/C/Program Files (x86)/RivaTuner Statistics Server/Doc/ReadMe.pdf",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/ckeditor.config.js",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/templates/xpage--node--8.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/templates/views-view-field--what-s-on--whats-on-page--field-main-image.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/templates/page--node--8.tpl.php",
+		"/C/xampp/htdocs/retry.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/slider/index.html",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/themes/views-view--what-s-on--whats-on-page.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/misc/slider.html",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_owl.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/slider/owl2/assets/owl.carousel.css",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/slider/owl.carousel/assets/css/slider.css",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/slider/owl.carousel/owl-carousel/my.js",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/slider/owl.carousel/owl-carousel/my2.js",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/slider/owl.carousel/assets/css/slider.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/slider/owl.carousel/index.html",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/slider/owl.carousel/assets/css/cons.css",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/slider/gulpfile.js",
+		"/C/Users/atom/Site Prep/Experiments/slider/index.html",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_footer.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_admin-menu.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_event.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/misc/signup.html",
+		"/C/xampp/htdocs/constellations/sites/all/modules/metatag/README.txt",
+		"/C/xampp/htdocs/constellations/sites/all/modules/ckeditor/ckeditor.styles.js",
+		"/C/xampp/htdocs/constellations/sites/all/modules/wysiwyg/editors/ckeditor.inc",
+		"/C/xampp/htdocs/constellations/sites/all/libraries/ckeditor/ckeditor.js",
+		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
+		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/User/PlainTasks.sublime-settings",
+		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/PlainTasks (Windows).sublime-settings",
+		"/C/Users/atom/AppData/Roaming/Sublime Text 3/Packages/PlainNotes/Notes.sublime-settings",
+		"/C/xampp/htdocs/constellations/sites/all/libraries/tinymce/jscripts/tiny_mce/themes/advanced/editor_template.js",
+		"/C/xampp/htdocs/constellations/sites/all/libraries/tinymce/jscripts/tiny_mce/themes/advanced/editor_template_src.js",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/sass/_page.scss",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/fonts/stylesheet.css",
+		"/C/xampp/htdocs/constellations/sites/all/themes/constellations/templates/ds-reset--node-front-page-full.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/bootstrap/template.php",
+		"/C/xampp/htdocs/constellations/sites/all/themes/bootstrap/theme/system/page.tpl.php",
+		"/C/xampp/htdocs/constellations/modules/field/theme/field.tpl.php",
+		"/C/xampp/htdocs/constellations/sites/all/modules/admin_menu/admin_menu.js",
+		"/C/xampp/htdocs/constellations/sites/all/modules/admin_menu/admin_menu.css",
+		"/C/Users/tom/Desktop/colors.theme",
+		"/C/xampp/htdocs/constellations/sites/default/settings.php",
+		"/C/Users/tom/AppData/Roaming/Sublime Text 3/Packages/User/node.sublime-build",
+		"/C/Users/tom/Documents/test.js",
+		"/C/Users/tom/Sites/wp_portfolio/wp-content/themes/bones-child/library/sass/style.scss",
+		"/C/xampp/htdocs/pro-drupal/sites/all/modules/custom/annotate/annotate.admin.inc",
+		"/C/xampp/htdocs/pro-drupal/modules/field/field.crud.inc",
+		"/C/xampp/htdocs/pro-drupal/sites/all/modules/custom/annotate/annotate.install",
+		"/C/xampp/htdocs/pro-drupal/sites/all/modules/custom/annotate/annotate.module",
+		"/C/xampp/htdocs/pro-drupal/sites/all/modules/custom/annotate/annotate.info",
+		"/C/Users/tom/Sites/wp_portfolio/wp-content/themes/bones-child/gulpfile.js",
+		"/C/Users/tom/Sites/wp_portfolio/wp-content/themes/bones-child/library/css/style.css",
+		"/C/Users/tom/Sites/wp_portfolio/wp-content/themes/bones-child/out/style.css",
+		"/C/Users/tom/Sites/wp_portfolio/wp-content/themes/bones-child/library/css/style-no-flex.css",
+		"/C/Users/tom/AppData/Local/Temp/Temp1_PDD7.zip/PDD7/annotate/annotate.module",
+		"/C/Users/tom/AppData/Local/Temp/Temp1_PDD7.zip/PDD7/annotate/annotate.install",
+		"/C/Users/tom/AppData/Local/Temp/Temp1_PDD7.zip/PDD7/annotate/annotate.info",
+		"/C/Users/tom/AppData/Local/Temp/Temp1_PDD7.zip/PDD7/annotate/annotate.admin.inc",
+		"/C/Users/tom/AppData/Roaming/Sublime Text 3/Packages/Emmet/Emmet.sublime-settings",
+		"/C/Users/tom/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/xampp/apache/conf/extra/httpd-ssl.conf"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+			"C:\\xampp\\htdocs\\constellations\\sites\\all\\themes\\constellations\\sass",
+			"C:\\xampp\\htdocs\\constellations",
+			"C:\\xampp\\htdocs\\constellations\\sites\\all\\themes\\constellations\\sass",
+			"C:\\xampp\\htdocs\\constellations\\sites\\all\\themes\\constellations/sass",
+			"C:\\xampp\\htdocs\\constellations\\sites\\all\\themes\\constellations",
+			"C:\\xampp\\htdocs\\constellations\\sites\\all\\libraries\\ckeditor",
+			"C:\\xampp\\htdocs\\constellations\\sites\\all\\themes\\constellations",
+			"C:\\xampp\\htdocs\\constellations\\sites\\all\\themes",
+			"C:\\xampp\\htdocs\\constellations\\sites\\all\\modules\\ds",
+			"C:\\xampp\\htdocs\\constellations\\sites\\all\\modules\\ds\\layouts",
+			"C:\\xampp\\htdocs\\constellations\\sites\\all\\themes\\bootstrap\\theme",
+			"C:\\xampp\\htdocs\\constellations\\sites\\all",
+			"C:\\xampp\\htdocs\\constellations\\sites\\all\\themes\\bootstrap"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"postcss",
+			"self.",
+			"returnFixtures",
+			"list",
+			"\"gameweek\": 1",
+			".whats-on__image",
+			"2666",
+			".front-page__main-image",
+			"1.400",
+			".background-img--greeting-img",
+			"front-page__screen-width-wrapper",
+			"all-events-link__wrapper",
+			"whats-on__image",
+			"ackground-img--greeting-im",
+			"40px",
+			"carousel",
+			"front-page__intro-text--content",
+			".front-page__intro-text--content",
+			"front-page__intro-text--content",
+			"logo",
+			"uInterior",
+			"buffer]",
+			"2666",
+			"constellations/",
+			"Contact",
+			"margin",
+			"navi",
+			"logo",
+			"position: absolute;\n	top: 0;\n	left: -24px;\n	top: 50%;\n	margin-top: -20px;\n	cursor: pointer;",
+			"owl-carousel",
+			"slider__details",
+			"tickets",
+			"ticket",
+			"tickets",
+			"event",
+			"width",
+			"h1",
+			"owl.carousel",
+			"nav__links",
+			"max",
+			"all-events-link",
+			"show",
+			"$this",
+			"li",
+			":first-child {\n				",
+			".body",
+			"front-page__intro-text",
+			"version",
+			"nt-page__lo",
+			".front-page__main-image",
+			"ront-page__log",
+			"ont-page__l",
+			"front-page__logo",
+			".front-page__main-image",
+			"margin-top: (254px / 3);",
+			"163px",
+			"front-page__intro-text",
+			"welcome",
+			".whats-on__image",
+			".front-page__main-image",
+			"glyphicons-halflings-regular.woff2",
+			"glyphicons-halflings-regular.woff2 ",
+			"520px",
+			"70vh",
+			"60vh",
+			"height",
+			"100vh",
+			"front-page__screen-width-text",
+			"0",
+			"background-img__event--small",
+			"bottom",
+			"front-page__screen-width-wrapper",
+			"_ufirst",
+			"theme_advanced_fonts",
+			"advanced",
+			"inline",
+			"md",
+			"max",
+			"content",
+			"'",
+			"url('gotham",
+			"'gotham",
+			"gotham",
+			"$layout_wrapper",
+			"$left_wrapper",
+			"navbar",
+			"$content_column_class",
+			"column",
+			"content_column_class",
+			"$tabs",
+			"view",
+			"Start",
+			"Stop",
+			"font-size",
+			"'small'",
+			"big",
+			"small",
+			"chmod ",
+			"chmod a+w sites/default/settings.php",
+			"$form"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 128.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "prototype.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Users\\atom\\Site Prep\\Experiments\\albums2016\\albums2016.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 464.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
