@@ -9,27 +9,13 @@ app.controller('homeController', ['$scope', '$http', '$q', '$timeout', 'getFixtu
 
 	var deferred = $q.defer();
 
-	this.fixtures = function() {
-		displayFixtures.createFixtures()
-			.then( function (result) {
-				console.log(displayFixtures.data);
-				return result;
-			});
-	}
+	
 
-	console.log(displayFixtures.data);
-
-}]);
-
-app.service('getFixtures', ['$http', '$q', function ($http, $q) {
-	var self = this;
-
-	self.requestFixtures = function() {
-		return $http.get('/app/example-data/fixtures.json')
-			.then(function(response) {
-				return response;
-			});
-	}
+	$timeout(function() {
+	        console.log(displayFixtures, 'y');
+	        self.fixtures = displayFixtures;
+	    }, 3000);
+	displayFixtures.createFixtures();
 
 }]);
 
@@ -42,13 +28,12 @@ app.service('displayFixtures', ['getFixtures', function (getFixtures) {
 			.then( function (result) {
 				var data = result.data.data;
 				return data;
-				console.log(result);
-
 			}).then( function(result) {
-				result = makeFixtures(data);
-				console.log(result);
+				result = makeFixtures(result);
+				return result;
 			}).then ( function(result) {
 				self.data = result;
+				console.log(self);
 				return self.data;
 			});
 	}
@@ -64,5 +49,20 @@ app.service('displayFixtures', ['getFixtures', function (getFixtures) {
 		};
 		return list;
 	}	
+
+}]);
+
+
+app.service('getFixtures', ['$http', '$q', function ($http, $q) {
+	var self = this;
+
+	self.requestFixtures = function() {
+		return $http.get('/app/example-data/fixtures.json')
+			.then(function(response) {
+				return response;
+			});
+	}
+
+	return self;
 
 }]);
