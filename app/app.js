@@ -3,54 +3,54 @@ var app = angular.module('app', []);
 app.controller('homeController', ['$scope', '$http', '$q', '$timeout', 'getFixtures', 'displayFixtures', function ($scope, $http, $q, $timeout, getFixtures, displayFixtures) {
 	var self = this;
 
-	self.test = 'This Works';
+	self.title = 'Premier Predictions';
 
 	// http://haroldrv.com/2015/02/understanding-angularjs-q-service-and-promises/
 
-	displayFixtures.createFixtures();
-
-	self.fixtures = displayFixtures;
-
-	console.log(typeof displayFixtures.createFixtures())
+	// What a $$state is
+	// http://stackoverflow.com/questions/30146045/how-to-access-json-object-state-value
 
 }]);
 
-app.service('displayFixtures', ['getFixtures', function (getFixtures) {
-
+app.controller('showFixturesController', ['displayFixtures', function(displayFixtures) {
 	var self = this;
+	displayFixtures.createFixtures.then(function(data) {
+		self.fixtures = data;
+		console.log(data);
+	})
 
-	self.createFixtures = function() {
-		getFixtures.requestFixtures()
+}])
+
+app.factory('displayFixtures', ['getFixtures', 'makeFixtures', function (getFixtures, makeFixtures) {
+
+	return {
+		createFixtures: getFixtures.requestFixtures()
 			.then( function (result) {
 				var data = result.data.data;
 				return data;
 			}).then( function(result) {
-				result = makeFixtures(result);
-				return result;
-			}).then ( function(result) {
-				self.results = result;
-				return result;
-			});
-	}
+				array = makeFixtures.loopFixtures(result);
+				return array;
+			})
+	} 
 
-	function makeFixtures(data) {
+}]);
+
+app.service('makeFixtures', [function() {
+
+	this.loopFixtures = function(data) {
 		list = [];
 		for (var i = 0; i < data.length; i++) {
-			var fixture = {};
-			fixture.homeTeam = data[i].home;
-			fixture.awayTeam = data[i].away;
-			fixture.fate = data[i].date;
-			list.push(fixture);
+			if (data[i].gameweek === 1) {
+				var fixture = {};
+				fixture.homeTeam = data[i].home;
+				fixture.awayTeam = data[i].away;
+				fixture.date = data[i].date;
+				list.push(fixture);
+			}
 		};
 		return list;
 	}	
-
-	self.testThis = function () {
-		return 'This text';
-	}
-
-	return self;
-
 }]);
 
 

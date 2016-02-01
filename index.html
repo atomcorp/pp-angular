@@ -11,11 +11,31 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<h1>Premier Predictions</h1>
 				<div ng-controller="homeController as home">
-					{{ home.test }} <br>
-					{{ home.fixtures}} <br>
-					{{ home.objectTest }}
+					<h1>{{ home.title }}</h1>
+				</div>
+				<br>
+				<div ng-controller="showFixturesController as fixtures">
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<td>Home Team</td>
+								<td></td>
+								<td>Date</td>
+								<td></td>
+								<td>Away</td>
+							</tr>
+						</thead>	
+						<tbody>
+							<tr ng-repeat="fixture in fixtures.fixtures">
+								<td>{{ fixture.homeTeam }}</td>
+								<td><input type="text" class="form-control" placeholder="Home" size="1"></td>
+								<td>{{ fixture.date }}</td>
+								<td><input type="text" class="form-control" placeholder="Away" size="1"></td>
+								<td>{{ fixture.awayTeam }}</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
