@@ -16,7 +16,7 @@ var sourcemaps = require('gulp-sourcemaps');
 // var gzip = require('gulp-gzip');
 
 var paths = {
-    sassSrc: 'assets/sass/*.scss',
+    sassSrc: 'assets/css/*.scss',
     jsSrc: [
         'js/app.js',
         'js/directives/*.js',
