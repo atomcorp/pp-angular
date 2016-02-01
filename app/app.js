@@ -7,15 +7,11 @@ app.controller('homeController', ['$scope', '$http', '$q', '$timeout', 'getFixtu
 
 	// http://haroldrv.com/2015/02/understanding-angularjs-q-service-and-promises/
 
-	var deferred = $q.defer();
-
-	
-
-	$timeout(function() {
-	        console.log(displayFixtures, 'y');
-	        self.fixtures = displayFixtures;
-	    }, 3000);
 	displayFixtures.createFixtures();
+
+	self.fixtures = displayFixtures;
+
+	console.log(typeof displayFixtures.createFixtures())
 
 }]);
 
@@ -32,9 +28,8 @@ app.service('displayFixtures', ['getFixtures', function (getFixtures) {
 				result = makeFixtures(result);
 				return result;
 			}).then ( function(result) {
-				self.data = result;
-				console.log(self);
-				return self.data;
+				self.results = result;
+				return result;
 			});
 	}
 
@@ -44,11 +39,17 @@ app.service('displayFixtures', ['getFixtures', function (getFixtures) {
 			var fixture = {};
 			fixture.homeTeam = data[i].home;
 			fixture.awayTeam = data[i].away;
-			fixture.data = data[i].date;
+			fixture.fate = data[i].date;
 			list.push(fixture);
 		};
 		return list;
 	}	
+
+	self.testThis = function () {
+		return 'This text';
+	}
+
+	return self;
 
 }]);
 
@@ -58,7 +59,7 @@ app.service('getFixtures', ['$http', '$q', function ($http, $q) {
 
 	self.requestFixtures = function() {
 		return $http.get('/app/example-data/fixtures.json')
-			.then(function(response) {
+			.success(function(response) {
 				return response;
 			});
 	}
