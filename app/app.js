@@ -1,6 +1,6 @@
 var app = angular.module('app', []);
 
-app.controller('homeController', ['$scope', '$http', '$q', '$timeout', 'getFixtures', 'displayFixtures', function ($scope, $http, $q, $timeout, getFixtures, displayFixtures) {
+app.controller('homeController', [ function () {
 	var self = this;
 
 	self.title = 'Premier Predictions';
@@ -12,14 +12,46 @@ app.controller('homeController', ['$scope', '$http', '$q', '$timeout', 'getFixtu
 
 }]);
 
-app.controller('showFixturesController', ['displayFixtures', function(displayFixtures) {
+app.controller('showFixturesController', ['displayFixtures', 'predictionObjectFactory', 'fixturesProvider', function (displayFixtures, predictionObjectFactory, fixturesProvider) {
 	var self = this;
 	displayFixtures.createFixtures.then(function(data) {
 		self.fixtures = data;
-		console.log(data);
+		self.fixtureAmount = self.fixtures.length;
+		// self.prediction = predictionObjectFactory.run(self.fixtureAmount);
 	})
 
-}])
+	function getFixtures() {
+		fixturesProvider.run;
+	}
+
+	getFixtures();
+
+}]);
+
+app.controller('inputtedPredictionsController', [ function() {
+	var self = this;
+	
+	// self.prediction = showFixturesController.self.prediction;
+	// console.log(self.prediction);
+
+}]);
+
+app.factory('predictionObjectFactory', [function () {
+	
+	return {
+		run: function(array) {
+			var predictionArray = [];
+			for (var i = 0; i < array; i++) {
+				var prediction = {};
+				prediction.homeGoals = 0;
+				prediction.awayGoals = 0;
+				prediction.index = i + 1;
+				predictionArray.push(prediction);
+			};
+			return predictionArray;
+		}
+	}
+}]);
 
 app.factory('displayFixtures', ['getFixtures', 'makeFixtures', function (getFixtures, makeFixtures) {
 
@@ -46,6 +78,7 @@ app.service('makeFixtures', [function() {
 				fixture.homeTeam = data[i].home;
 				fixture.awayTeam = data[i].away;
 				fixture.date = data[i].date;
+				fixture.index = [i];
 				list.push(fixture);
 			}
 		};
@@ -65,5 +98,20 @@ app.service('getFixtures', ['$http', '$q', function ($http, $q) {
 	}
 
 	return self;
+
+}]);
+
+app.factory('fixturesProvider', ['displayFixtures', function(displayFixtures) {
+
+	return {
+		run: displayFixtures.createFixtures
+			.then(function(data) {
+				delete data.$promise;
+				delete data.$resolved;
+
+				var newData = data;
+				return newData;
+			})		
+	}
 
 }]);
