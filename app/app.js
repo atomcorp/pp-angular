@@ -12,7 +12,7 @@ app.controller('homeController', [ function () {
 
 }]);
 
-app.controller('showFixturesController', ['displayFixtures', 'predictionObjectFactory', 'fixturesProvider', function (displayFixtures, predictionObjectFactory, fixturesProvider) {
+app.controller('showFixturesController', ['displayFixtures', 'predictionObjectFactory', 'fixturesProvider', 'calculatePointsService', function (displayFixtures, predictionObjectFactory, fixturesProvider, calculatePointsService) {
 	var self = this;
 
 	fixturesProvider.run
@@ -21,8 +21,7 @@ app.controller('showFixturesController', ['displayFixtures', 'predictionObjectFa
 			self.fixtureAmount = self.fixtures.length;
 			self.predictions = predictionObjectFactory.run(self.fixtureAmount);
 			addPredictions(self.fixtures, self.predictions);
-			console.log(self.fixtures);
-			self.fixtures[0].homeGoals = 5;
+			
 		})
 
 	function addPredictions(fixtures, predictions) {
@@ -32,13 +31,8 @@ app.controller('showFixturesController', ['displayFixtures', 'predictionObjectFa
 		};
 	}
 
-	self.addPredictions = function() {
-		var count = 0;
-		for (var i = 0; i < self.fixtures.length; i++) {
-			count += Number(self.fixtures[i].homeGoals);
-			count += Number(self.fixtures[i].awayGoals);
-		};
-		console.log(count);
+	self.calculate = function() {
+		self.points = calculatePointsService.run(self);
 	}
 
 }]);
@@ -132,21 +126,27 @@ app.factory('fixturesProvider', ['displayFixtures', function(displayFixtures) {
 
 }]);
 
-app.service('comparePredictionsFactory', [function() {
+app.service('calculatePointsService', [function() {
 	// get actual scores
 	// get predictions
 	// compare and rank 
-	
-	this.run = function(homeScore, awayScore, homePrediction, awayPrediction) {
-		for (var i = 0; i < 1; i++) {
+
+	this.run = function(data) {
+		var userPoints = 0;
+		for (var i = 0; i < data.fixtureAmount; i++) {
+			var homeScore = data.fixtures[i].homeGoals;
+			var awayScore = data.fixtures[i].awayGoals;
+			var homePrediction = data.predictions[i].homeGoals;
+			var awayPrediction = data.predictions[i].awayGoals;
 			if (homeScore === homePrediction && awayScore === awayPrediction) {
-				console.log('3 pts');
+				userPoints += 3;
 			} else if (calculateResult(homeScore, awayScore) === calculateResult(homePrediction, awayPrediction)) {
-				console.log('1 pt');
+				userPoints += 1;
 			} else {
-				console.log('0 pts');
+				userPoints += 0;
 			}
 		};
+		return userPoints;
 	}
 
 	function calculateResult(home, away) {
