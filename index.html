@@ -28,15 +28,15 @@
 								<td>Away</td>
 							</tr>
 						</thead>	
-						<tbody ng-controller="inputtedPredictionsController as input">
-							<tr ng-repeat="fixture in fixtures.fixtures track by fixture.index">
+						<tbody>
+							<tr ng-repeat="fixture in fixtures.fixtures track by fixture.index" >
 								<td class="text-xs-left vertical-align--middle">{{ fixture.homeTeam }}</td>
 								<td class="vertical-align--middle">
-									<input type="text" class="form-control prediction-input float-right " size="1" ng-model="input.home[fixture.index]">
+									<input type="text" class="form-control prediction-input float-right " size="1" ng-model="fixture.homeGoals">
 								</td>
 								<td class="text-xs-center vertical-align--middle">{{ fixture.date }}</td>
 								<td class="vertical-align--middle">
-									<input type="text" class="form-control prediction-input float-left " size="1" ng-model="input.away[fixture.index]">
+									<input type="text" class="form-control prediction-input float-left " size="1" ng-model="fixture.awayGoals">
 								</td>
 								<td class="text-xs-right vertical-align--middle">{{ fixture.awayTeam }}</td>
 							</tr>
