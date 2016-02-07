@@ -14,11 +14,6 @@ app.controller('homeController', [ function () {
 
 app.controller('showFixturesController', ['displayFixtures', 'predictionObjectFactory', 'fixturesProvider', function (displayFixtures, predictionObjectFactory, fixturesProvider) {
 	var self = this;
-	// displayFixtures.createFixtures.then(function(data) {
-	// 	self.fixtures = data;
-	// 	self.fixtureAmount = self.fixtures.length;
-	// 	self.prediction = predictionObjectFactory.run(self.fixtureAmount);
-	// })
 
 	fixturesProvider.run
 		.then(function(data) {
@@ -26,14 +21,25 @@ app.controller('showFixturesController', ['displayFixtures', 'predictionObjectFa
 			self.fixtureAmount = self.fixtures.length;
 			self.predictions = predictionObjectFactory.run(self.fixtureAmount);
 			addPredictions(self.fixtures, self.predictions);
+			console.log(self.fixtures);
+			self.fixtures[0].homeGoals = 5;
 		})
 
-		function addPredictions(fixtures, predictions) {
-			for (var i = 0; i < fixtures.length; i++) {
-				fixtures[i].homeGoals = predictions[i].homeGoals;
-				fixtures[i].awayGoals = predictions[i].awayGoals;
-			};
-		}
+	function addPredictions(fixtures, predictions) {
+		for (var i = 0; i < fixtures.length; i++) {
+			fixtures[i].homeGoals = predictions[i].homeGoals;
+			fixtures[i].awayGoals = predictions[i].awayGoals;
+		};
+	}
+
+	self.addPredictions = function() {
+		var count = 0;
+		for (var i = 0; i < self.fixtures.length; i++) {
+			count += Number(self.fixtures[i].homeGoals);
+			count += Number(self.fixtures[i].awayGoals);
+		};
+		console.log(count);
+	}
 
 }]);
 
@@ -124,4 +130,34 @@ app.factory('fixturesProvider', ['displayFixtures', function(displayFixtures) {
 			})		
 	}
 
+}]);
+
+app.service('comparePredictionsFactory', [function() {
+	// get actual scores
+	// get predictions
+	// compare and rank 
+	
+	this.run = function(homeScore, awayScore, homePrediction, awayPrediction) {
+		for (var i = 0; i < 1; i++) {
+			if (homeScore === homePrediction && awayScore === awayPrediction) {
+				console.log('3 pts');
+			} else if (calculateResult(homeScore, awayScore) === calculateResult(homePrediction, awayPrediction)) {
+				console.log('1 pt');
+			} else {
+				console.log('0 pts');
+			}
+		};
+	}
+
+	function calculateResult(home, away) {
+		if (home > away) {
+			return 'homeWin';
+		} else if (home < away) {
+			return 'awayWin';
+		} else if (home === away){
+			return 'draw';
+		} else {
+			console.error('Error in calculateResult()');
+		}
+	}
 }]);
