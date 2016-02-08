@@ -12,7 +12,7 @@ app.controller('homeController', [ function () {
 
 }]);
 
-app.controller('showFixturesController', ['displayFixtures', 'predictionObjectFactory', 'fixturesProvider', 'calculatePointsService', function (displayFixtures, predictionObjectFactory, fixturesProvider, calculatePointsService) {
+app.controller('showFixturesController', ['predictionObjectFactory', 'fixturesProvider', 'calculatePointsService', 'getResultsService', function (predictionObjectFactory, fixturesProvider, calculatePointsService, getResultsService) {
 	var self = this;
 
 	fixturesProvider.run
@@ -34,6 +34,24 @@ app.controller('showFixturesController', ['displayFixtures', 'predictionObjectFa
 	self.calculate = function() {
 		self.points = calculatePointsService.run(self);
 	}
+
+	// Make getResults a facotry/provider
+	// call getResultsService
+	// loop to get goals
+	// add to (new) self.results
+	// compare with self.fixtures
+
+	function getResults() {
+		getResultsService.requestResults()
+			.then(function(data){
+				var data = data.data;
+				return data;
+			}).then(function(data) {
+
+			})
+	}
+
+	compareResults();
 
 }]);
 
@@ -71,7 +89,7 @@ app.factory('displayFixtures', ['getFixtures', 'makeFixtures', function (getFixt
 			.then( function (result) {
 				var data = result.data.data;
 				return data;
-			}).then( function(result) {
+			}).then( function (result) {
 				array = makeFixtures.loopFixtures(result);
 				return array;
 			})
@@ -161,3 +179,16 @@ app.service('calculatePointsService', [function() {
 		}
 	}
 }]);
+
+app.service('getResultsService', ['$http', function($http) {
+
+	var self = this;
+
+	self.requestResults = function() {
+		return $http.get('/app/example-data/results.json')
+			.success(function(response) {
+				return response;
+			});
+	}
+
+}])
