@@ -1,4 +1,3 @@
-
 app.factory('displayFixtures', ['getFixtures', 'makeFixtures', function (getFixtures, makeFixtures) {
 
 	return {

@@ -1,3 +1,5 @@
+// Fixtures Service
+
 app.service('getFixtures', ['$http', '$q', function ($http, $q) {
 	var self = this;
 
@@ -22,7 +24,7 @@ app.service('makeFixtures', [function() {
 				fixture.homeTeam = data[i].home;
 				fixture.awayTeam = data[i].away;
 				fixture.date = data[i].date;
-				fixture.index = [i];
+				fixture.matchId = data[i].id;
 				list.push(fixture);
 			}
 		};

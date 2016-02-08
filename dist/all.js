@@ -1,1 +1,232 @@
-var app=angular.module("app",[]);app.controller("homeController",[function(){var t=this;t.title="Premier Predictions"}]),app.controller("showFixturesController",["predictionObjectFactory","fixturesFactory","calculatePointsService","getResultsService",function(t,e,r,n){function a(t,e){for(var r=0;r<t.length;r++)t[r].homeGoals=e[r].homeGoals,t[r].awayGoals=e[r].awayGoals}function i(){n.requestResults().then(function(t){var t=t.data;return t}).then(function(t){})}var u=this;e.run.then(function(e){u.fixtures=e,u.fixtureAmount=u.fixtures.length,u.predictions=t.run(u.fixtureAmount),a(u.fixtures,u.predictions)}),u.calculate=function(){u.points=r.run(u)},i()}]),app.factory("displayFixtures",["getFixtures","makeFixtures",function(t,e){return{createFixtures:t.requestFixtures().then(function(t){var e=t.data.data;return e}).then(function(t){return array=e.loopFixtures(t),array})}}]),app.factory("fixturesFactory",["displayFixtures",function(t){return{run:t.createFixtures.then(function(t){var e=t;return self.data=e,e})}}]),app.service("getFixtures",["$http","$q",function(t,e){var r=this;return r.requestFixtures=function(){return t.get("/app/example-data/fixtures.json").success(function(t){return t})},r}]),app.service("makeFixtures",[function(){this.loopFixtures=function(t){list=[];for(var e=0;e<t.length;e++)if(1===t[e].gameweek){var r={};r.homeTeam=t[e].home,r.awayTeam=t[e].away,r.date=t[e].date,r.index=[e],list.push(r)}return list}}]),app.service("getResultsService",["$http",function(t){var e=this;e.requestResults=function(){return t.get("/app/example-data/results.json").success(function(t){return t})}}]),app.factory("predictionObjectFactory",[function(){return{run:function(t){for(var e=[],r=0;t>r;r++){var n={};n.homeGoals=0,n.awayGoals=0,n.index=r,e.push(n)}return e}}}]),app.service("calculatePointsService",[function(){function t(t,e){return t>e?"homeWin":e>t?"awayWin":t===e?"draw":void console.error("Error in calculateResult()")}this.run=function(e){for(var r=0,n=0;n<e.fixtureAmount;n++){var a=e.fixtures[n].homeGoals,i=e.fixtures[n].awayGoals,u=e.predictions[n].homeGoals,o=e.predictions[n].awayGoals;r+=a===u&&i===o?3:t(a,i)===t(u,o)?1:0}return r}}]);
+// App
+
+var app = angular.module('app', []);
+
+app.controller('homeController', [ function () {
+	var self = this;
+
+	self.title = 'Premier Predictions';
+
+	// http://haroldrv.com/2015/02/understanding-angularjs-q-service-and-promises/
+
+	// What a $$state is
+	// http://stackoverflow.com/questions/30146045/how-to-access-json-object-state-value
+
+}]);
+
+app.controller('showFixturesController', ['predictionObjectFactory', 'fixturesFactory', 'calculatePointsService', 'resultsFactory', function (predictionObjectFactory, fixturesFactory, calculatePointsService, resultsFactory) {
+	var self = this;
+
+	fixturesFactory.run
+		.then(function(data) {
+			self.fixtures = data;
+			self.fixtureAmount = self.fixtures.length;
+			self.predictions = predictionObjectFactory.run(self.fixtureAmount);
+			addPredictions(self.fixtures, self.predictions);
+			
+		})
+
+	// todo: delete this	
+	function addPredictions(fixtures, predictions) {
+		for (var i = 0; i < fixtures.length; i++) {
+			fixtures[i].homeGoals = predictions[i].homeGoals;
+			fixtures[i].awayGoals = predictions[i].awayGoals;
+		};
+	}
+
+	// todo: delete this
+	self.calculate = function() {
+		self.points = calculatePointsService.run(self);
+	}
+
+	// Make getResults a facotry/provider
+	// call getResultsService
+	// loop to get goals
+	// add to (new) self.results
+	// compare with self.fixtures
+
+	function getResults() {
+		resultsFactory.runResults
+			.then(function(data){
+				var data = data;
+				return data;
+			}).then(function(data) {
+				console.log('getresults', data);
+			})
+	}
+
+}]);
+
+
+
+
+
+
+
+
+app.factory('displayFixtures', ['getFixtures', 'makeFixtures', function (getFixtures, makeFixtures) {
+
+	return {
+		createFixtures: getFixtures.requestFixtures()
+			.then( function (result) {
+				var data = result.data.data;
+				return data;
+			}).then( function (result) {
+				array = makeFixtures.loopFixtures(result);
+				return array;
+			})
+	} 
+
+}]);
+
+
+app.factory('fixturesFactory', ['displayFixtures', function(displayFixtures) {
+
+	return {
+		run: displayFixtures.createFixtures
+			.then(function(data) {
+				var newData = data;
+				self.data = newData;
+				return newData;
+			})		
+	}
+
+}]);
+// Fixtures Service
+
+app.service('getFixtures', ['$http', '$q', function ($http, $q) {
+	var self = this;
+
+	self.requestFixtures = function() {
+		return $http.get('/app/example-data/fixtures.json')
+			.success(function(response) {
+				return response;
+			});
+	}
+
+	return self;
+
+}]);
+
+app.service('makeFixtures', [function() {
+
+	this.loopFixtures = function(data) {
+		list = [];
+		for (var i = 0; i < data.length; i++) {
+			if (data[i].gameweek === 1) {
+				var fixture = {};
+				fixture.homeTeam = data[i].home;
+				fixture.awayTeam = data[i].away;
+				fixture.date = data[i].date;
+				fixture.matchId = data[i].id;
+				list.push(fixture);
+			}
+		};
+		return list;
+	}	
+
+}]);
+// Results Factory
+
+app.factory('resultsFactory', ['getResultsService', 'makeResults', function(getResultsService, makeResults) {
+
+	return {
+		runResults: getResultsService.requestResults()
+			.then(function(data){
+				var data = data.data;
+				return data;
+			}).then(function(data) {
+				var results = makeResults.loopResults(data);
+				return results;
+			})
+	}
+}]);
+
+// Results Service
+
+app.service('getResultsService', ['$http', function($http) {
+
+	var self = this;
+
+	self.requestResults = function() {
+		return $http.get('/app/example-data/results.json')
+			.success(function(response) {
+				return response;
+			});
+	}
+
+}]);
+
+app.service('makeResults', [function() {
+
+	this.loopResults = function(data) {
+		console.log('makeResults', data);
+		list = [];
+		for (var i = 0; i < data.length; i++) {
+			if (data[i].gameweek === 1) {
+				var result = {};
+				result.homeScore = data[i].homeScore;
+				result.awayScore = data[i].awayScore;
+				result.matchId = data[i].id;
+				list.push(result);
+			}
+		};
+		console.log('list', list);
+		return list;
+	}	
+
+}]);
+// Tasks Service
+
+app.factory('predictionObjectFactory', [function () {
+	
+	return {
+		run: function(array) {
+			var predictionArray = [];
+			for (var i = 0; i < array; i++) {
+				var prediction = {};
+				prediction.homeGoals = 0;
+				prediction.awayGoals = 0;
+				prediction.index = i;
+				predictionArray.push(prediction);
+			};
+			return predictionArray;
+		}
+	}
+}]);
+
+app.service('calculatePointsService', [function() {
+	// get actual scores
+	// get predictions
+	// compare and rank 
+
+	this.run = function(data) {
+		var userPoints = 0;
+		for (var i = 0; i < data.fixtureAmount; i++) {
+			var homeScore = data.fixtures[i].homeGoals;
+			var awayScore = data.fixtures[i].awayGoals;
+			var homePrediction = data.predictions[i].homeGoals;
+			var awayPrediction = data.predictions[i].awayGoals;
+			if (homeScore === homePrediction && awayScore === awayPrediction) {
+				userPoints += 3;
+			} else if (calculateResult(homeScore, awayScore) === calculateResult(homePrediction, awayPrediction)) {
+				userPoints += 1;
+			} else {
+				userPoints += 0;
+			}
+		};
+		return userPoints;
+	}
+
+	function calculateResult(home, away) {
+		if (home > away) {
+			return 'homeWin';
+		} else if (home < away) {
+			return 'awayWin';
+		} else if (home === away){
+			return 'draw';
+		} else {
+			console.error('Error in calculateResult()');
+		}
+	}
+}]);

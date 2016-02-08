@@ -50,7 +50,7 @@ gulp.task('js',function() {
 	    // .pipe(sourcemaps.init())
 	    	.pipe(concat(paths.dist))
             .pipe(ngAnnotate())
-	    	.pipe(uglify())
+	    	// .pipe(uglify())
 	    // .pipe(sourcemaps.write())
 	    .pipe(rename('all.js'))
 	    // .pipe(gzip())

@@ -1,3 +1,5 @@
+// App
+
 var app = angular.module('app', []);
 
 app.controller('homeController', [ function () {
@@ -12,7 +14,7 @@ app.controller('homeController', [ function () {
 
 }]);
 
-app.controller('showFixturesController', ['predictionObjectFactory', 'fixturesFactory', 'calculatePointsService', 'getResultsService', function (predictionObjectFactory, fixturesFactory, calculatePointsService, getResultsService) {
+app.controller('showFixturesController', ['predictionObjectFactory', 'fixturesFactory', 'calculatePointsService', 'resultsFactory', function (predictionObjectFactory, fixturesFactory, calculatePointsService, resultsFactory) {
 	var self = this;
 
 	fixturesFactory.run
@@ -24,6 +26,7 @@ app.controller('showFixturesController', ['predictionObjectFactory', 'fixturesFa
 			
 		})
 
+	// todo: delete this	
 	function addPredictions(fixtures, predictions) {
 		for (var i = 0; i < fixtures.length; i++) {
 			fixtures[i].homeGoals = predictions[i].homeGoals;
@@ -31,6 +34,7 @@ app.controller('showFixturesController', ['predictionObjectFactory', 'fixturesFa
 		};
 	}
 
+	// todo: delete this
 	self.calculate = function() {
 		self.points = calculatePointsService.run(self);
 	}
@@ -42,28 +46,16 @@ app.controller('showFixturesController', ['predictionObjectFactory', 'fixturesFa
 	// compare with self.fixtures
 
 	function getResults() {
-		getResultsService.requestResults()
+		resultsFactory.runResults
 			.then(function(data){
-				var data = data.data;
+				var data = data;
 				return data;
 			}).then(function(data) {
-
+				console.log('getresults', data);
 			})
 	}
 
-	getResults();
-
 }]);
-
-// app.controller('inputtedPredictionsController', ['predictionObjectFactory', 'fixturesFactory', function(predictionObjectFactory, fixturesFactory) {
-// 	var self = this;
-
-// 	fixturesFactory.run
-// 		.then(function(data) {
-// 			self.prediction = predictionObjectFactory.run(self.fixtureAmount);
-// 		})
-
-// }]);
 
 
 
