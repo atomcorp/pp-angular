@@ -12,10 +12,10 @@ app.controller('homeController', [ function () {
 
 }]);
 
-app.controller('showFixturesController', ['predictionObjectFactory', 'fixturesProvider', 'calculatePointsService', 'getResultsService', function (predictionObjectFactory, fixturesProvider, calculatePointsService, getResultsService) {
+app.controller('showFixturesController', ['predictionObjectFactory', 'fixturesFactory', 'calculatePointsService', 'getResultsService', function (predictionObjectFactory, fixturesFactory, calculatePointsService, getResultsService) {
 	var self = this;
 
-	fixturesProvider.run
+	fixturesFactory.run
 		.then(function(data) {
 			self.fixtures = data;
 			self.fixtureAmount = self.fixtures.length;
@@ -51,144 +51,23 @@ app.controller('showFixturesController', ['predictionObjectFactory', 'fixturesPr
 			})
 	}
 
-	compareResults();
+	getResults();
 
 }]);
 
-app.controller('inputtedPredictionsController', ['predictionObjectFactory', 'fixturesProvider', function(predictionObjectFactory, fixturesProvider) {
-	var self = this;
+// app.controller('inputtedPredictionsController', ['predictionObjectFactory', 'fixturesFactory', function(predictionObjectFactory, fixturesFactory) {
+// 	var self = this;
 
-	fixturesProvider.run
-		.then(function(data) {
-			self.prediction = predictionObjectFactory.run(self.fixtureAmount);
-		})
+// 	fixturesFactory.run
+// 		.then(function(data) {
+// 			self.prediction = predictionObjectFactory.run(self.fixtureAmount);
+// 		})
 
-}]);
-
-app.factory('predictionObjectFactory', [function () {
-	
-	return {
-		run: function(array) {
-			var predictionArray = [];
-			for (var i = 0; i < array; i++) {
-				var prediction = {};
-				prediction.homeGoals = 0;
-				prediction.awayGoals = 0;
-				prediction.index = i;
-				predictionArray.push(prediction);
-			};
-			return predictionArray;
-		}
-	}
-}]);
-
-app.factory('displayFixtures', ['getFixtures', 'makeFixtures', function (getFixtures, makeFixtures) {
-
-	return {
-		createFixtures: getFixtures.requestFixtures()
-			.then( function (result) {
-				var data = result.data.data;
-				return data;
-			}).then( function (result) {
-				array = makeFixtures.loopFixtures(result);
-				return array;
-			})
-	} 
-
-}]);
-
-app.service('makeFixtures', [function() {
-
-	this.loopFixtures = function(data) {
-		list = [];
-		for (var i = 0; i < data.length; i++) {
-			if (data[i].gameweek === 1) {
-				var fixture = {};
-				fixture.homeTeam = data[i].home;
-				fixture.awayTeam = data[i].away;
-				fixture.date = data[i].date;
-				fixture.index = [i];
-				list.push(fixture);
-			}
-		};
-		return list;
-	}	
-
-}]);
+// }]);
 
 
-app.service('getFixtures', ['$http', '$q', function ($http, $q) {
-	var self = this;
 
-	self.requestFixtures = function() {
-		return $http.get('/app/example-data/fixtures.json')
-			.success(function(response) {
-				return response;
-			});
-	}
 
-	return self;
 
-}]);
 
-app.factory('fixturesProvider', ['displayFixtures', function(displayFixtures) {
 
-	return {
-		run: displayFixtures.createFixtures
-			.then(function(data) {
-				var newData = data;
-				self.data = newData;
-				return newData;
-			})		
-	}
-
-}]);
-
-app.service('calculatePointsService', [function() {
-	// get actual scores
-	// get predictions
-	// compare and rank 
-
-	this.run = function(data) {
-		var userPoints = 0;
-		for (var i = 0; i < data.fixtureAmount; i++) {
-			var homeScore = data.fixtures[i].homeGoals;
-			var awayScore = data.fixtures[i].awayGoals;
-			var homePrediction = data.predictions[i].homeGoals;
-			var awayPrediction = data.predictions[i].awayGoals;
-			if (homeScore === homePrediction && awayScore === awayPrediction) {
-				userPoints += 3;
-			} else if (calculateResult(homeScore, awayScore) === calculateResult(homePrediction, awayPrediction)) {
-				userPoints += 1;
-			} else {
-				userPoints += 0;
-			}
-		};
-		return userPoints;
-	}
-
-	function calculateResult(home, away) {
-		if (home > away) {
-			return 'homeWin';
-		} else if (home < away) {
-			return 'awayWin';
-		} else if (home === away){
-			return 'draw';
-		} else {
-			console.error('Error in calculateResult()');
-		}
-	}
-}]);
-
-app.service('getResultsService', ['$http', function($http) {
-
-	var self = this;
-
-	self.requestResults = function() {
-		return $http.get('/app/example-data/results.json')
-			.success(function(response) {
-				return response;
-			});
-	}
-
-}])

@@ -18,9 +18,10 @@ var sourcemaps = require('gulp-sourcemaps');
 var paths = {
     sassSrc: 'assets/css/*.scss',
     jsSrc: [
-        'js/app.js',
-        'js/directives/*.js',
-        'js/services/*.js'
+        'app/app.js',
+        'app/fixtures/*.js',
+        'app/results/*.js',
+        'app/tasks/*.js'
     ],
     dist: 'dist',
 };
@@ -44,13 +45,13 @@ gulp.task('sass', function () {
 
 gulp.task('js',function() {
 	return gulp.src(paths.jsSrc)
-		.pipe(jshint())
-		.pipe(jshint.reporter(stylish))
-	    .pipe(sourcemaps.init())
+		// .pipe(jshint())
+		// .pipe(jshint.reporter(stylish))
+	    // .pipe(sourcemaps.init())
 	    	.pipe(concat(paths.dist))
             .pipe(ngAnnotate())
 	    	.pipe(uglify())
-	    .pipe(sourcemaps.write())
+	    // .pipe(sourcemaps.write())
 	    .pipe(rename('all.js'))
 	    // .pipe(gzip())
 	    .pipe(gulp.dest(paths.dist));
